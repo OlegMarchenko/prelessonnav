@@ -1,0 +1,58 @@
+@use "variables";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: variables.$fontColor;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+body {
+  font: 16px / 1.4 variables.$fontMain;
+  background: variables.$bg;
+  color: variables.$fontColor;
+}
+
+.container {
+  padding: 0 30px;
+  max-width: 490px;
+  width: 100%;
+  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    max-width: 750px;
+    &__nav {
+      max-width: 794px;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 1110px;
+    &__nav {
+      max-width: 1240px;
+    }
+  }
+}
+
+.section {
+  padding: 40px 0;
+  @media screen and (min-width: 768px) {
+    padding: 80px 0;
+  }
+}

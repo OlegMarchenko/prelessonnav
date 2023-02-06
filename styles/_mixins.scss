@@ -1,0 +1,35 @@
+@use "variables";
+
+@mixin btn($bg: variables.$primaryColor, $color: variables.$fontColor) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $bg;
+  color: variables.$fontColor;
+  border-radius: variables.$defaultRadius;
+  font: 16px / 1.4 variables.$fontMainTitle;
+  padding: 16px 10px;
+  border: 2px solid variables.$primaryColor;
+  width: 100%;
+  > svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+  }
+  @media screen and (min-width: 768px) {
+    width: max-content;
+  }
+  @media screen and (min-width: 1280px) {
+    transition: variables.$defaultTransition;
+    > svg {
+      transition: variables.$defaultTransition;
+    }
+    &:hover {
+      background: transparent;
+      > svg {
+        color: variables.$primaryColor;
+      }
+    }
+  }
+}

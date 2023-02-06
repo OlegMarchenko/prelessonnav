@@ -1,0 +1,406 @@
+@font-face {
+  font-family: "SpaceMonoBold";
+  src: url("../fonts/SpaceMono-Bold.woff2") format("woff2"), url("../fonts/SpaceMono-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SpaceMonoRegular";
+  src: url("../fonts/SpaceMono-Regular.woff2") format("woff2"), url("../fonts/SpaceMono-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "WorkSansRegular";
+  src: url("../fonts/WorkSans-Regular.woff2") format("woff2"), url("../fonts/WorkSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "WorkSansSemiBold";
+  src: url("../fonts/WorkSans-SemiBold.woff2") format("woff2"), url("../fonts/WorkSans-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+body {
+  font: 16px/1.4 "WorkSansRegular", sans-serif;
+  background: #2b2b2b;
+  color: #fff;
+}
+
+.container {
+  padding: 0 30px;
+  max-width: 490px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+  .container__nav {
+    max-width: 794px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1110px;
+  }
+  .container__nav {
+    max-width: 1240px;
+  }
+}
+
+.section {
+  padding: 40px 0;
+}
+@media screen and (min-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+}
+
+.header {
+  padding: 15px 0;
+}
+.header__holder {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__logo {
+  display: block;
+  width: 182px;
+  height: 24px;
+}
+.header__logo > svg {
+  display: block;
+  width: inherit;
+  height: inherit;
+}
+.header__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 18px;
+  height: 14px;
+  position: relative;
+}
+.header__menu input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.header__menu span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  width: calc(100% - 5px);
+}
+.header__menu span:nth-of-type(2) {
+  width: 100%;
+}
+.header__nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 75px 15px 50px;
+  visibility: hidden;
+  transition: 0.5s all;
+  height: 100vh;
+  z-index: 0;
+}
+.header__nav > ul > li {
+  margin-bottom: 10px;
+  text-align: center;
+}
+.header__nav > ul > li > a {
+  font: 34px/1.3 "WorkSansSemiBold", sans-serif;
+}
+.header__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #A259FF;
+  color: #fff;
+  border-radius: 20px;
+  font: 16px/1.4 "WorkSansSemiBold", sans-serif;
+  padding: 16px 10px;
+  border: 2px solid #A259FF;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: auto 0 0 0;
+}
+.header__btn > svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+@media screen and (min-width: 768px) {
+  .header__btn {
+    width: max-content;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header__btn {
+    transition: 0.2s all;
+  }
+  .header__btn > svg {
+    transition: 0.2s all;
+  }
+  .header__btn:hover {
+    background: transparent;
+  }
+  .header__btn:hover > svg {
+    color: #A259FF;
+  }
+}
+.header input {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 0;
+}
+.header input:checked {
+  z-index: 3;
+}
+.header input:checked ~ .header__menu {
+  z-index: 2;
+}
+.header input:checked ~ .header__nav {
+  position: fixed;
+  top: 0;
+  visibility: visible;
+  z-index: 1;
+}
+@media screen and (min-width: 768px) {
+  .header__btn {
+    margin: auto auto 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header {
+    padding: 20px 0;
+  }
+  .header input, .header__menu {
+    display: none;
+  }
+  .header__nav {
+    flex-direction: row;
+    align-items: center;
+    height: auto;
+    position: static;
+    background: none;
+    padding: 0;
+    visibility: visible;
+    width: initial;
+    transition: initial;
+  }
+  .header__nav > ul {
+    display: flex;
+  }
+  .header__nav > ul > li {
+    margin: 0 50px 0 0;
+    text-align: initial;
+  }
+  .header__nav > ul > li > a {
+    font: 16px/1.3 "WorkSansSemiBold", sans-serif;
+    transition: 0.2s all;
+  }
+  .header__nav > ul > li > a:hover {
+    color: #A259FF;
+  }
+  .header__nav > ul > li:last-child {
+    margin: 0 30px 0 0;
+  }
+  .header__btn {
+    margin: 0;
+  }
+}
+
+.section-main__title {
+  font: 28px/40px "WorkSansSemiBold", sans-serif;
+  margin-bottom: 10px;
+}
+.section-main__description {
+  margin-bottom: 40px;
+}
+.section-main__nft {
+  background: #3B3B3B;
+  margin-bottom: 40px;
+  border-radius: 20px;
+}
+.section-main__img {
+  display: block;
+  width: 100%;
+  height: 206px;
+}
+.section-main__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+}
+.section-main__img-desc {
+  padding: 22px 20px;
+}
+.section-main__img-name {
+  font: 22px/30px "WorkSansSemiBold", sans-serif;
+  margin-bottom: 10px;
+}
+.section-main__img-creator {
+  display: flex;
+  align-items: center;
+}
+.section-main__img-creator > img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+.section-main__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #A259FF;
+  color: #fff;
+  border-radius: 20px;
+  font: 16px/1.4 "WorkSansSemiBold", sans-serif;
+  padding: 16px 10px;
+  border: 2px solid #A259FF;
+  width: 100%;
+  margin-bottom: 40px;
+}
+.section-main__btn > svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+@media screen and (min-width: 768px) {
+  .section-main__btn {
+    width: max-content;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .section-main__btn {
+    transition: 0.2s all;
+  }
+  .section-main__btn > svg {
+    transition: 0.2s all;
+  }
+  .section-main__btn:hover {
+    background: transparent;
+  }
+  .section-main__btn:hover > svg {
+    color: #A259FF;
+  }
+}
+.section-main__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+.section-main__list-item > span {
+  font: 22px/1.6 "SpaceMonoBold", sans-serif;
+}
+@media screen and (min-width: 768px) {
+  .section-main__holder {
+    display: grid;
+    grid-template-columns: repeat(2, 330px);
+    grid-template-areas: "title nft" "description nft" "btn nft" "list nft";
+    align-items: start;
+    grid-gap: 20px 30px;
+  }
+  .section-main__title {
+    grid-area: title;
+    margin: 0;
+    font: 38px/1.2 "WorkSansSemiBold", sans-serif;
+  }
+  .section-main__description {
+    grid-area: description;
+    margin: 0;
+  }
+  .section-main__nft {
+    grid-area: nft;
+    margin: 0;
+  }
+  .section-main__img {
+    height: 222px;
+  }
+  .section-main__btn {
+    grid-area: btn;
+    margin: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .section-main__list {
+    grid-area: list;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .section-main__holder {
+    grid-template-columns: repeat(2, 510px);
+    grid-gap: 30px;
+  }
+  .section-main__title {
+    font: 68px/1.2 "WorkSansSemiBold", sans-serif;
+  }
+  .section-main__description {
+    font: 22px/1.2 "WorkSansRegular", sans-serif;
+  }
+  .section-main__img {
+    height: 400px;
+  }
+  .section-main__list-item > span {
+    font: 28px/1.2 "SpaceMonoBold", sans-serif;
+  }
+  .section-main__list-item > p {
+    font: 24px/1.2 "WorkSansRegular", sans-serif;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
